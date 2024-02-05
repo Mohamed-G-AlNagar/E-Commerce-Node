@@ -122,9 +122,6 @@ export const applyCouponToProductInCart = catchAsync(async (req, res) => {
     (prod) => String(prod.product) == req.body.productId
   );
 
-  console.log("product********", product, "******", product.priceAfterDiscount);
-  console.log("product******", product.product);
-  console.log("product******", product.price);
   if (!product) return AppError(res, "Product not found in the cart", 401);
   const discount = (product.price * coupon.couponValue) / 100;
   product.priceAfterDiscount = product.price - discount;
