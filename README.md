@@ -28,12 +28,26 @@ E-Commerce Website backend API using Node.js Express.js
     - Delete product (by admin or the one create it )
 
 3-Category:
-*any user
-  - Get all categories
-  - Get specific category
-*admin or seller
-- addCategory
-- Update Category (by admin or the one create it )
-- Delete Category and all of his products (by admin or the one create it )
-- De-active Category and all of his products (by admin or the one create it )
-- Re-active Category and all of his products (by admin or the one create it )
+ *any user
+   - Get all categories
+   - Get specific category
+ *admin or seller
+  - addCategory
+  - Update Category (by admin or the one create it )
+  - Delete Category and all of his products (by admin or the one create it )
+  - De-active Category and all of his products (by admin or the one create it )
+  - Re-active Category and all of his products (by admin or the one create it )
+
+4-Cart:
+ - Create cart
+ - Remove product from cart
+ - Add product to cart
+ - Update cart (by admin or the one create it )
+ - Get All my Carts
+ - delete cart by id
+ - get cart by id
+ - 
+ - 
+
+   
+ - Apply coupon on cart if not applied to products
