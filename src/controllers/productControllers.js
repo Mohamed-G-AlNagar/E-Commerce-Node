@@ -17,6 +17,7 @@ export const addProduct = catchAsync(async (req, res) => {
   // if (productCheck) {
   //   return AppError(res, "Product Name Already Exists", 400);
   // }
+
   // all fields already validated
   await uploadImageAndAddToReq(req, res); // upload image to cloud and store url to the req body
   const product = await Product.create(req.body);

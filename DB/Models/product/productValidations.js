@@ -8,7 +8,6 @@ export const addProductValidation = Joi.object({
   finalPrice: Joi.number().required(),
   stock: Joi.number().required(),
   image: Joi.string().required(),
-  // category: Joi.string().required(),
   categoryId: Joi.string().hex().min(24).max(24).required(),
 });
 

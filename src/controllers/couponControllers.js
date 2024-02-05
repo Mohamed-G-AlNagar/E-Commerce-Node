@@ -108,18 +108,27 @@ export const updateCoupon = catchAsync(async (req, res, next) => {
 });
 
 //-------------------------------------------------
-export const applyCouponToProduct = catchAsync(async (req, res) => {
+export const applyCouponToProductInCart = catchAsync(async (req, res) => {
   const coupon = await Coupon.findOne({ couponCode: req.params.couponCode });
   if (!coupon) return AppError(res, "Coupon not found", 401);
 
   if (coupon.isActive == false)
     return AppError(res, "Coupon is expired or deActivated", 401);
 
-  const product = await Product.findById(req.body.productId);
-  if (!product) return AppError(res, "Product not found", 401);
-  const discount = (product.finalPrice * coupon.couponValue) / 100;
-  product.priceAfterDiscount = product.finalPrice - discount;
-  await product.save();
+  const cart = await Cart.findById(req.body.cartId);
+  if (!cart) AppError(res, "Coupon not found", 401);
+
+  const product = cart.products.find(
+    (prod) => String(prod.product) == req.body.productId
+  );
+
+  console.log("product********", product, "******", product.priceAfterDiscount);
+  console.log("product******", product.product);
+  console.log("product******", product.price);
+  if (!product) return AppError(res, "Product not found in the cart", 401);
+  const discount = (product.price * coupon.couponValue) / 100;
+  product.priceAfterDiscount = product.price - discount;
+  await cart.save();
 
   coupon.isActive = false;
   await coupon.save();
@@ -129,7 +138,6 @@ export const applyCouponToProduct = catchAsync(async (req, res) => {
     message: "Coupon Successfully Applied To the Product",
     data: {
       ProductId: product._id,
-      productName: product.productName,
       finalBeforeDiscount: product.finalPrice,
       priceAfterDiscount: product.priceAfterDiscount,
     },
@@ -166,6 +174,44 @@ export const applyCouponToCart = catchAsync(async (req, res) => {
     message: "Coupon Successfully Applied To the Product",
     data: {
       cart,
+    },
+  });
+});
+//-------------------------------------------------
+export const applySaleToProduct = catchAsync(async (req, res) => {
+  const coupon = await Coupon.findOne({ couponCode: req.params.couponCode });
+  if (!coupon) return AppError(res, "Coupon not found", 401);
+
+  if (coupon.createdBy.toString() !== req.user._id && req.user.role !== "admin")
+    return AppError(res, "This Coupon don't belonge to u ", 401);
+
+  if (coupon.isActive == false)
+    return AppError(res, "Coupon is expired or deActivated", 401);
+
+  const product = await Product.findById(req.body.productId);
+  if (!product) return AppError(res, "Product not found", 401);
+
+  if (
+    product.createdBy.toString() !== req.user._id &&
+    req.user.role !== "admin"
+  )
+    return AppError(res, "This product don't belonge to u ", 401);
+
+  const discount = (product.finalPrice * coupon.couponValue) / 100;
+  product.priceAfterDiscount = product.finalPrice - discount;
+  await product.save();
+
+  coupon.isActive = false;
+  await coupon.save();
+
+  res.status(200).json({
+    status: "success",
+    message: "Coupon Sale Successfully Applied To the Product",
+    data: {
+      ProductId: product._id,
+      productName: product.productName,
+      finalBeforeDiscount: product.finalPrice,
+      priceAfterDiscount: product.priceAfterDiscount,
     },
   });
 });

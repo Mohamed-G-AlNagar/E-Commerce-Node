@@ -45,6 +45,11 @@ const productSchema = new mongoose.Schema(
       default: true,
       select: false,
     },
+    createdBy: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: [true, "must have creater User Id"],
+    },
   },
   {
     timestamps: true,

@@ -17,6 +17,12 @@ export const updateCouponValidation = Joi.object({
 export const applyCouponToProductValidation = Joi.object({
   //   updatedBy: Joi.string().hex().min(24).max(24),// will be auto inserted by the id already signed in in and update
   couponCode: Joi.string().alphanum().min(3).max(10).required(), // instead of using id
+  cartId: Joi.string().hex().min(24).max(24).required(),
+  productId: Joi.string().hex().min(24).max(24).required(), // id of product
+});
+export const applySaleCouponToProductValidation = Joi.object({
+  //   updatedBy: Joi.string().hex().min(24).max(24),// will be auto inserted by the id already signed in in and update
+  couponCode: Joi.string().alphanum().min(3).max(10).required(), // instead of using id
   productId: Joi.string().hex().min(24).max(24).required(), // id of product
 });
 
