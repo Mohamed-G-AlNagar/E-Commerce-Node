@@ -48,14 +48,19 @@ E-Commerce Website backend API using Node.js Express.js
   - get cart by id
 
 5-Coupon:
-*User
- - Apply coupon to product
- - Apply coupon on cart if not applied to products
-*admin-seller
- - create Coupon
- - Apply Sale coupon to product (by admin or the one create it (seller))
- - Delete coupon (by admin or the one create it (seller))
- - Update coupon (by admin or the one create it(seller))
- - Get all coupons
+ *User
+  - Apply coupon to product
+  - Apply coupon on cart if not applied to products
+ *admin-seller
+  - create Coupon
+  - Apply Sale coupon to product (by admin or the one create it (seller))
+  - Delete coupon (by admin or the one create it (seller))
+  - Update coupon (by admin or the one create it(seller))
+  - Get all coupons
 
+6- Order (Payment)
+ *admin
+  - checkout-session (payment) for cart
+  - get Order by id
+  - get All Orders
    
