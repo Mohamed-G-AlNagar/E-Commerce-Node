@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema(
     },
     slug: {
       type: String,
-      required: [true, "Slug is required."], // auto generated and save
+      // required: [true, "Slug is required."], // auto generated using pre save middleware
       unique: true,
       trim: true,
     },
