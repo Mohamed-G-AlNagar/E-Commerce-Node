@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 
+import main from "./src/controllers/main.js";
 import userRouter from "./src/routers/userRouter.js";
 import productRouter from "./src/routers/productRouter.js";
 import categoryRouter from "./src/routers/categoryRouter.js";
@@ -13,6 +14,7 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 
+server.get("/", main);
 server.use("/api/v1/users", userRouter);
 server.use("/api/v1/carts", cartRouter);
 server.use("/api/v1/products", productRouter);

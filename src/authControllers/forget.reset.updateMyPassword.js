@@ -22,10 +22,10 @@ export const forgotPassword = catchAsync(async (req, res) => {
 
   //? 3- send email to the user with the token
 
-  const url = `http://localhost:3000/api/v1/users/resetPassword/${resetToken}`;
+  const url = `http://localhost:${process.env.PORT}/api/v1/users/resetPassword/${resetToken}`;
   const subject = "Reset Password Token link will expires whithin 15 minutes";
   const message = `We've received a request to reset your password. To create a new password,
-   take the below token to http://localhost:3000/api/v1/users/resetPassword/ as patch method :
+   take the below token to http://localhost:${process.env.PORT}/api/v1/users/resetPassword/ as patch method :
    ${resetToken}.
    If you didn't forget your password, please ignore this email!`;
 
