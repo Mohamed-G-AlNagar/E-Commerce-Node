@@ -1,10 +1,11 @@
-# E-Commerce Website-Backend Node By Mohamed Ahmed Alnagar
+# E-Commerce Website-Backend Node API for E-Commerce Website By Mohamed Ahmed Alnagar
  (include Stripe payment- upload image to cloudinary)
 https://m-alnagar.onrender.com/
 
 Postman Collection Documentation render:
 https://documenter.getpostman.com/view/32077555/2s9YywffND
 
+Accounts:
 admin: mag3789@gmail.com
 user:e30bdbdbda@emailabox.pro
 pass:m.A123456789
