@@ -73,7 +73,7 @@ export const signup = catchAsync(async (req, res, next) => {
   // make token expire within 15 minites
   const token = newUser.createVerifyEmailToken(15);
   await newUser.save({ validateBeforeSave: false });
-  const url = `http://localhost:${process.env.PORT}/api/v1/users/verify/${token}`;
+  const url = `https://m-alnagar.onrender.com/api/v1/users/verify/${token}`;
   const subject = "Verify Email link will expires whithin 15 minutes";
   const message = `Thank you for signing up! To complete your registration,
   please click on the verification link below.

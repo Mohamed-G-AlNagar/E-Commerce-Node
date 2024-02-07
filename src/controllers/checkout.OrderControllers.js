@@ -16,14 +16,14 @@ export const createCheckoutSession = catchAsync(async (req, res) => {
   if (!cart) return AppError(res, "Cart Not Exist", 401);
   if (cart.payCashOnDelivery)
     return res.redirect(
-      `http://localhost:3000/api/v1/orders/createOrder/${cart._id}`
+      `https://m-alnagar.onrender.com/api/v1/orders/createOrder/${cart._id}`
     );
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: `http://localhost:3000/api/v1/orders/createOrder/${cart._id}`,
-    cancel_url: `http://localhost:3000/api/v1/orders/cancelOrder/${cart._id}`,
+    success_url: `https://m-alnagar.onrender.com/api/v1/orders/createOrder/${cart._id}`,
+    cancel_url: `https://m-alnagar.onrender.com/api/v1/orders/cancelOrder/${cart._id}`,
     customer_email: req.user.email,
     client_reference_id: req.params.cartId,
     line_items: await Promise.all(
