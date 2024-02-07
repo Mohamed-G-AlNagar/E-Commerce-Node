@@ -1,10 +1,10 @@
 # E-Commerce Website-Backend Node By Mohamed Ahmed Alnagar
+ (include Stripe payment- upload image to cloudinary)
 https://m-alnagar.onrender.com/
 
 Postman Collection Documentation render:
 https://documenter.getpostman.com/view/32077555/2s9YywffND
-Postman Collection Documentation Local Host:
-https://documenter.getpostman.com/view/32077555/2s9YywfKML
+
 
 
 E-Commerce Website backend API using Node.js Express.js
