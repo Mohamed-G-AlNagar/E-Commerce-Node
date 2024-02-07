@@ -5,7 +5,9 @@ https://m-alnagar.onrender.com/
 Postman Collection Documentation render:
 https://documenter.getpostman.com/view/32077555/2s9YywffND
 
-
+admin: mag3789@gmail.com
+user:e30bdbdbda@emailabox.pro
+pass:m.A123456789
 
 E-Commerce Website backend API using Node.js Express.js
 
