@@ -5,6 +5,7 @@ import User from "../../DB/Models/user/userModel.js";
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
 import sendEmail from "../utils/email.js";
+import Cart from "../../DB/Models/cart/cartModel.js";
 
 //-------------------------------
 const signToken = (user, expireWithin = process.env.JWT_EXPIRES_IN) => {
@@ -92,6 +93,7 @@ export const signup = catchAsync(async (req, res, next) => {
     res.status(200).json({
       status: "success",
       message: " Verify Email link Sent To your Email",
+      userId: newUser._id,
     });
   } catch (err) {
     //? remove the verify token from the user object and save it
@@ -124,6 +126,8 @@ export const verifyAccount = catchAsync(async (req, res) => {
       400
     );
   }
+  //? create Cart
+  const cart = await Cart.create({ createdBy: user._id });
 
   //? mark the user as verified
   user.isVerified = true;
